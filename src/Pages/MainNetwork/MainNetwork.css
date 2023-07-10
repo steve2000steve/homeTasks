@@ -1,0 +1,279 @@
+.mainNetwork__body{
+    background-color: #100e1f;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0px;
+    padding: 15px;
+}
+
+.btnModalStats_Main{
+    background-color: #252434;
+    padding: 10px 20px;
+    color: white;
+}
+
+.headerTittle__Main{
+    height: 54px;
+    padding: 12px;
+    padding-left: 30px;
+    background-color: #252434;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.headerTittle__Main h1{
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:500;
+    line-height: 19.2px;
+}
+
+.main__header{
+    padding-right: 35px;
+}
+
+.headerMainBlock__Main{
+    margin-top: 24px;
+    background-color: #252434;
+    padding: 16px 24px;
+    padding-top: 30px;
+    border-radius: 6px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.searchBar{
+    display: flex;
+    margin-left: 15px;
+}
+
+.icon_Search{
+    margin-right: 10px;
+    font-size: 17px;
+    color: white;
+}
+
+.search__Inp{
+    font-size: 14px;
+    color: #6a7074;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.statsMainBlock__Main{
+    padding: 16px 24px;
+    border-radius: 6px;
+    background-color: #252434;
+    width: max-content;
+    height: max-content;
+    margin-left: 25px;
+    margin-top: 25PX;
+    display: flex;
+    flex-direction: column;
+}
+
+.totalLeadsBlock__Main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid #3b3a49;
+    padding-bottom: 8px;
+}
+
+.totalLeadsTittle__Main{
+    color: #bebec2;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.totalLeadsCount__Main{
+    color: white;
+    font-size: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.dateBlock__Main{
+    display: flex;
+    align-items: center;
+}
+
+.dateTittle__Main{
+    color: #bebec2;
+    font-size: 13px;
+    margin-right: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.sentAndDepsBlocks__Main{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.sentMainBlock__Main{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 155px;
+}
+
+.sentTittle__Main , .depsTittle__Main{
+    font-size: 14px;
+    color: #bebec2;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.sentLeadsCount__Main, .depsLeadsCount__Main{
+    color: white;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+.depsMainBlock__Main{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    width: 155px;
+}
+
+.sentLeadsPocent__Main, .depsLeadsPocent__Main{
+    font-size: 14px;
+    color: #bebec2;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.lineGradient__Main{
+    height: 8px;
+    border-radius: 6px;
+    margin-top: 7px;  
+    margin-bottom: 10px;
+}
+
+.BottomHeader__Main{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.dateMainBlock__Main{
+    display: flex;
+    align-items: center;
+    background-color: #3a374a;
+    width: max-content;
+    padding: 6px 10px;
+    padding-right: 25px;
+    border-radius: 8px;
+    height: 41px;
+    margin-right: 6px;
+
+}
+.iconCalendar__Main{
+    font-size: 24px;
+    color: white;
+    margin-right: 8px;
+}
+
+.iconCalendar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tittleDate__Main{
+    color: white;
+    font-size: 14px;
+    margin-right: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.date__Main{
+    color: white;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.tab{
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.choseDate__Main{
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3a374a;
+    margin-left: 6px;
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 0px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.countyMainBlock__Main{
+    display: flex;
+    align-items: center;
+    height: 41px;
+    background-color: #3a374a;
+    border-radius: 8px;
+    margin-left: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.iconGeo__Main{
+    width: 47px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.geoBlock__Main{
+    width: 150px;
+    color: white; 
+    font-size: 14px;
+ 
+}
+.deleteGeo__Main{
+    width: 40px;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DateModalBlock__Main{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.countGeos__Main{
+    background-color: #5f7390;
+    padding: 4px 6px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin-left: 6px;
+}

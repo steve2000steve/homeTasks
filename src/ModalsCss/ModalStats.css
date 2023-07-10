@@ -1,0 +1,84 @@
+.modalStats{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.modalStats.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalStats_content{
+    padding: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: rgb(23, 21, 21);
+    transform: scale(0.5);
+    transition: 0.4s all;
+    width: max-content;
+}
+
+.modalStats_content.active{
+    transform: scale(1);
+}
+
+.modalBlockWrite{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalLabelStats{
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.modalnputStats{
+    border-radius: 5px;
+    width: 70px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.btnModalProcent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 27px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin: auto;
+    font-size: 15px;
+    font-weight:bold;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+.btnModalProcent:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mainStats{
+    display: flex;
+    flex-direction: column;
+}
