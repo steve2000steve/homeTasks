@@ -2,11 +2,11 @@
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.4);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: flex-end;
     opacity: 0;
     pointer-events: none;
@@ -19,15 +19,16 @@
 }
 
 .modalGraph_content{
-    padding: 0px;
-    border-bottom-left-radius: 20px;
+    padding: 0px 30px;
     background-color: rgb(23, 21, 21);
     transform: scale(0.5);
     transition: 0.4s all;
-    width: 20vw;
-    z-index: 6;
+    width: max-content;
+    height: max-content;
+
 }
 
 .modalGraph_content.active{
     transform: scale(1);
 }
+

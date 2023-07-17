@@ -20,12 +20,10 @@
 
 .modalDateAndGeo_content{
     padding: 20px;
-    border-bottom-right-radius: 20px;
     background-color: rgb(23, 21, 21);
     transform: scale(0.5);
     transition: 0.4s all;
     width: max-content;
-    z-index: 6;
 }
 
 .modalDateAndGeo_content.active{

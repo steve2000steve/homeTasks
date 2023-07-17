@@ -1,3 +1,4 @@
+
 .mainNetwork__body{
     background-color: #100e1f;
     width: 100vw;
@@ -42,6 +43,7 @@
     border-radius: 6px;
     margin-left: 25px;
     margin-right: 25px;
+    /* width: max-content; */
 }
 
 .searchBar{
@@ -98,6 +100,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
+    
 }
 
 .dateBlock__Main{
@@ -163,22 +166,32 @@
     margin-bottom: 10px;
 }
 
+.MainBlocksBottom_Main{
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    height: max-content;
+}
+
 .BottomHeader__Main{
     margin-top: 20px;
     display: flex;
     align-items: center;
+    /* width: 50%; */
 }
+
 
 .dateMainBlock__Main{
     display: flex;
     align-items: center;
     background-color: #3a374a;
-    width: max-content;
+    /* width: 17.05%; */
+    /* width: 400px; */
     padding: 6px 10px;
     padding-right: 25px;
     border-radius: 8px;
     height: 41px;
-    margin-right: 6px;
+    margin-right: 12px;
 
 }
 .iconCalendar__Main{
@@ -219,13 +232,16 @@
     align-items: center;
     justify-content: center;
     background-color: #3a374a;
-    margin-left: 6px;
+    margin-right: 6px;
     color: white;
     font-size: 14px;
     border-radius: 8px;
     padding: 0px 16px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+}
+.lastBlockChoseDate{
+    margin-right: 0px;
 }
 
 .countyMainBlock__Main{
@@ -234,9 +250,10 @@
     height: 41px;
     background-color: #3a374a;
     border-radius: 8px;
-    margin-left: 12px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+    margin-right: 12px;
+    margin-top: 12px;
 }
 
 .iconGeo__Main{
@@ -276,4 +293,81 @@
     font-size: 12px;
     border-radius: 4px;
     margin-left: 6px;
+}
+
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+
+.affBlockMain_Main{
+    height: 41px;
+    display: flex;
+    align-items: center;
+    background-color: #3a374a;
+    border-radius: 8px;
+    margin-right: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 15px;
+    margin-top: 12px;
+}
+
+.affBlockMainIMG_Main{
+    width: 20px;
+    text-align: start;
+}
+.affBlockMainTEXT_Main{
+    text-align: start;
+    width: 150px;
+    /* margin: 0px; */
+}
+.affBlockMainICON_Main{
+    width: 20px;
+    text-align: end;
+}
+
+
+.SecondMainBlock_Main{
+    display: flex;
+    width: max-content;
+    margin-top: 12px;
+}
+
+.blureInfo.active{
+    position: absolute;
+    height: 50px;
+    background-color: #ffffff;
+    width: 200px;
+    display: block;
+}
+
+.blureInfo{
+    display: none;
+}
+
+.timeGap{
+    display: flex;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+#modalBtn{
+    background-color: #252434;
+    color: white;
+    padding: 10px 20px
+}
+#modalBtn:hover{
+    text-decoration: none;
+    color: gray;
+}
+
+@media screen and (max-width: 1194px) {
+    .searchBar{
+        margin-bottom: 12px;
+    }
 }

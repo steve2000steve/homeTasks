@@ -1,20 +1,111 @@
 import objCountries from "../../imports.js";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import "./SecondNetwork.css";
 import ModalStats from "../../ModalsJs/ModalStats.js";
 import ModalGraph from "../../ModalsJs/ModalGraph.js";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { CategoryScale, Chart } from "chart.js";
 import { registerables } from "chart.js";
-import { DateRangePicker } from "rsuite";
+import { DateRangePicker, Stack } from "rsuite";
 import { MultiSelect } from "primereact/multiselect";
 import Tooltip from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 import { tooltipClasses } from "@mui/material/Tooltip";
 import { Link } from "react-router-dom";
 import { FiHelpCircle } from "react-icons/fi";
+import subDays from "date-fns/subDays";
+import startOfWeek from "date-fns/startOfWeek";
+import endOfWeek from "date-fns/endOfWeek";
+import addDays from "date-fns/addDays";
+import startOfMonth from "date-fns/startOfMonth";
+import endOfMonth from "date-fns/endOfMonth";
+import addMonths from "date-fns/addMonths";
+import { IoStatsChart } from "react-icons/io5";
 Chart.register(CategoryScale);
 Chart.register(...registerables);
+
+const predefinedRanges = [
+  {
+    label: "Today",
+    value: [new Date(), new Date()],
+    placement: "left",
+  },
+  {
+    label: "Yesterday",
+    value: [addDays(new Date(), -1), addDays(new Date(), -1)],
+    placement: "left",
+  },
+  {
+    label: "This week",
+    value: [startOfWeek(new Date()), endOfWeek(new Date())],
+    placement: "left",
+  },
+  {
+    label: "Last 7 days",
+    value: [subDays(new Date(), 6), new Date()],
+    placement: "left",
+  },
+  {
+    label: "Last 30 days",
+    value: [subDays(new Date(), 29), new Date()],
+    placement: "left",
+  },
+  {
+    label: "This month",
+    value: [startOfMonth(new Date()), new Date()],
+    placement: "left",
+  },
+  {
+    label: "Last month",
+    value: [
+      startOfMonth(addMonths(new Date(), -1)),
+      endOfMonth(addMonths(new Date(), -1)),
+    ],
+    placement: "left",
+  },
+  {
+    label: "This year",
+    value: [new Date(new Date().getFullYear(), 0, 1), new Date()],
+    placement: "left",
+  },
+  {
+    label: "Last year",
+    value: [
+      new Date(new Date().getFullYear() - 1, 0, 1),
+      new Date(new Date().getFullYear(), 0, 0),
+    ],
+    placement: "left",
+  },
+  {
+    label: "All time",
+    value: [new Date(new Date().getFullYear() - 1, 0, 1), new Date()],
+    placement: "left",
+  },
+  {
+    label: "Last week",
+    closeOverlay: false,
+    value: (value) => {
+      const [start = new Date()] = value || [];
+      return [
+        addDays(startOfWeek(start, { weekStartsOn: 0 }), -7),
+        addDays(endOfWeek(start, { weekStartsOn: 0 }), -7),
+      ];
+    },
+    appearance: "default",
+  },
+  {
+    label: "Next week",
+    closeOverlay: false,
+    value: (value) => {
+      const [start = new Date()] = value || [];
+      return [
+        addDays(startOfWeek(start, { weekStartsOn: 0 }), 7),
+        addDays(endOfWeek(start, { weekStartsOn: 0 }), 7),
+      ];
+    },
+    appearance: "default",
+  },
+];
 
 function SecondNetwork() {
   const [activeModalStats, setActiveModalStats] = useState();
@@ -42,11 +133,17 @@ function SecondNetwork() {
   const [totalLeads, setTotalLeads] = useState(0);
   const [sendLeads, setSendLeads] = useState(0);
   const [depLeads, setDepLeads] = useState(0);
-
   const [procentSendLeads, setProcentsSendLeads] = useState(0);
   const [procentDepLeads, setProcentsDepLeads] = useState(0);
 
+  const [innerTotalLeads, setInnerTotalLeads] = useState(0);
+  const [innerSendLeads, setInnerSendLeads] = useState(0);
+  const [innerDepLeads, setInnerDepLeads] = useState(0);
+
   function procentsAll() {
+    setInnerTotalLeads(totalLeads);
+    setInnerSendLeads(sendLeads);
+    setInnerDepLeads(depLeads);
     const countProcentSend = ((sendLeads * 100) / totalLeads)
       .toString()
       .split(".");
@@ -57,8 +154,8 @@ function SecondNetwork() {
         countProcentSend[1].slice(0, 2)
       );
       setProcentsSendLeads(resultProcentSend);
-    } else {
-      resultProcentSend = "100";
+    } else if (countProcentSend.length === 1) {
+      resultProcentSend = countProcentSend[0];
       setProcentsSendLeads(resultProcentSend);
     }
 
@@ -72,160 +169,39 @@ function SecondNetwork() {
         countProcentDeps[1].slice(0, 2)
       );
       setProcentsDepLeads(resultProcentDeps);
-    } else {
-      resultProcentDeps = "100";
+    } else if (countProcentDeps.length === 1) {
+      resultProcentDeps = countProcentDeps[0];
       setProcentsDepLeads(resultProcentDeps);
     }
   }
 
-  let [countDateMonth, setCountDateMonth] = useState();
-  let [date1, setDate1] = useState(0);
-  let [date2, setDate2] = useState(0);
-  let [date3, setDate3] = useState(0);
-  let [date4, setDate4] = useState(0);
-  let [date5, setDate5] = useState(0);
-  let [date6, setDate6] = useState(0);
-  let [date7, setDate7] = useState(0);
-  let [date8, setDate8] = useState(0);
-  let [date9, setDate9] = useState(0);
-  let [date10, setDate10] = useState(0);
-  let [date11, setDate11] = useState(0);
-  let [date12, setDate12] = useState(0);
-  let [date13, setDate13] = useState(0);
-  let [date14, setDate14] = useState(0);
-  let [date15, setDate15] = useState(0);
-  let [date16, setDate16] = useState(0);
-  let [date17, setDate17] = useState(0);
-  let [date18, setDate18] = useState(0);
-  let [date19, setDate19] = useState(0);
-  let [date20, setDate20] = useState(0);
-  let [date21, setDate21] = useState(0);
-  let [date22, setDate22] = useState(0);
-  let [date23, setDate23] = useState(0);
-  let [date24, setDate24] = useState(0);
-  let [date25, setDate25] = useState(0);
-  let [date26, setDate26] = useState(0);
-  let [date27, setDate27] = useState(0);
-  let [date28, setDate28] = useState(0);
-  let [date29, setDate29] = useState(0);
-  let [date30, setDate30] = useState(0);
-  let [date31, setDate31] = useState(0);
-
-  let depsAllDays = 0;
-
-  function dateMonth(numDate) {
-    depsAllDays =
-      Number(date1) +
-      Number(date2) +
-      Number(date3) +
-      Number(date4) +
-      Number(date5) +
-      Number(date6) +
-      Number(date7) +
-      Number(date8) +
-      Number(date9) +
-      Number(date10) +
-      Number(date11) +
-      Number(date12) +
-      Number(date13) +
-      Number(date14) +
-      Number(date15) +
-      Number(date16) +
-      Number(date17) +
-      Number(date18) +
-      Number(date19) +
-      Number(date20) +
-      Number(date21) +
-      Number(date22) +
-      Number(date23) +
-      Number(date24) +
-      Number(date25) +
-      Number(date26) +
-      Number(date27) +
-      Number(date28) +
-      Number(date29) +
-      Number(date30) +
-      Number(date31);
-  }
   const [dateArrNew, setDateArrNew] = useState([]);
-  const barChartData = {
-    labels: dateArrNew,
-    datasets: [
-      {
-        data: [
-          date1,
-          date2,
-          date3,
-          date4,
-          date5,
-          date6,
-          date7,
-          date8,
-          date9,
-          date10,
-          date11,
-          date12,
-          date13,
-          date14,
-          date15,
-          date16,
-          date17,
-          date18,
-          date19,
-          date20,
-          date21,
-          date22,
-          date23,
-          date24,
-          date25,
-          date26,
-          date27,
-          date28,
-          date29,
-          date30,
-          date31,
-        ],
-        label: "FTD'S",
-        borderColor: "#3333ff",
-        fill: true,
-        lineTension: 0,
-        backgroundColor: "rgba(32, 0, 0, 0.5)",
-      },
-    ],
-  };
-
-  const zeroLength = 2;
+  const dateArrDate = [];
 
   function dateNewArr(e) {
+    dateArrDate.length = 0;
+    dateArrDate.push(e[0].toDateString());
     let dateTotalArr = [];
     let totalArrDate = e.join(",");
     let newArrayFirst = totalArrDate.slice(4, 15);
-    let newArraySecond = totalArrDate.slice(70, 82);
-    let currentDateFirst = totalArrDate.slice(8, 10);
-    let currentDateSecond = totalArrDate.slice(74, 78);
-    let currentYear = totalArrDate.slice(11, 15);
-    let currentMonthFirst = totalArrDate.slice(4, 7);
-    let currentMonthSecond = totalArrDate.slice(70, 74);
-    console.log(
-      newArrayFirst,
-      newArraySecond,
-      currentYear,
-      currentMonthFirst,
-      currentMonthSecond
-    );
-    for (
-      let i = Number(currentDateFirst);
-      i <= Number(currentDateSecond);
-      i++
-    ) {
-      dateTotalArr.push(
-        `${String(i).padStart(
-          zeroLength,
-          "0"
-        )} ${currentMonthFirst}. ${currentYear}`
-      );
+    const NewDate = new Date(newArrayFirst);
+
+    if (e[0].toDateString() === e[1].toDateString()) {
+      setDateArrNew(dateArrDate);
+    } else {
+      for (let i = 1; i > -1; i++) {
+        NewDate.setDate(NewDate.getDate() + 1);
+        dateArrDate.push(NewDate.toDateString());
+        if (e[1].toDateString() === dateArrDate[dateArrDate.length - 1]) {
+          break;
+        }
+      }
+
+      dateArrDate.map((date) => {
+        return dateTotalArr.push(date.slice(4));
+      });
+      setDateArrNew(dateTotalArr);
     }
-    setDateArrNew(dateTotalArr);
   }
 
   const [selectedCities, setSelectedCities] = useState([]);
@@ -251,15 +227,53 @@ function SecondNetwork() {
     [`& .${tooltipClasses.tooltip}`]: {
       width: 250,
       opacity: 0.1,
+      fontSize: 14,
+      padding: "10px 20px",
     },
   });
+
+  const [inpDeps, setInpDeps] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  ]);
+  const [depsAllDays, setDepsAllDays] = useState(0);
+  let countDeps = 0;
+
+  function countDepsGraph(event, index) {
+    let newInpDeps = [...inpDeps];
+    newInpDeps[index] = Number(event.target.value);
+    setInpDeps(newInpDeps);
+    for (let i = 0; i < newInpDeps.length; i++) {
+      countDeps = countDeps + newInpDeps[i];
+    }
+    setDepsAllDays(countDeps);
+  }
+
+  const barChartData = {
+    labels: dateArrNew,
+    datasets: [
+      {
+        data: inpDeps,
+        label: "FTD'S",
+        fill: true,
+        lineTension: 0,
+        backgroundColor: "rgba(32, 0, 0, 0.2)",
+        borderColor: "#62a2ea",
+      },
+    ],
+  };
+
   return (
     <>
       <div className="secondNetwork__body">
         <div className="headerTop">
           <div>
             <button
-              className="btnModalStats btnHover"
+              className="btnModalStatas btnHover"
+              style={{}}
               onClick={() => setActiveModalStats(true)}
             >
               Stats
@@ -292,177 +306,25 @@ function SecondNetwork() {
           setSendLeads={setSendLeads}
           setDepLeads={setDepLeads}
           procentsAll={procentsAll}
+          ranges={predefinedRanges}
         />
         <ModalGraph active={activeModalGraph} setActive={setActiveModalGraph}>
-          <div className="depsOnDay">Дней выбрано: {dateArrNew.length}</div>
-          <div style={{ marginTop: "30px", color: "white" }}>
-            <div className="twoDaysBlock">
-              <label>День 1</label>
-              <input type="number" onChange={(e) => setDate1(e.target.value)} />
-              <label>День 17</label>
-              <input
-                type="number"
-                onChange={(e) => setDate17(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 2</label>
-              <input type="number" onChange={(e) => setDate2(e.target.value)} />
-              <label>День 18</label>
-              <input
-                type="number"
-                onChange={(e) => setDate18(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 3</label>
-              <input type="number" onChange={(e) => setDate3(e.target.value)} />
-              <label>День 19</label>
-              <input
-                type="number"
-                onChange={(e) => setDate19(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 4</label>
-              <input type="number" onChange={(e) => setDate4(e.target.value)} />
-              <label>День 20</label>
-              <input
-                type="number"
-                onChange={(e) => setDate20(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 5</label>
-              <input type="number" onChange={(e) => setDate5(e.target.value)} />
-              <label>День 21</label>
-              <input
-                type="number"
-                onChange={(e) => setDate21(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 6</label>
-              <input type="number" onChange={(e) => setDate6(e.target.value)} />
-              <label>День 22</label>
-              <input
-                type="number"
-                onChange={(e) => setDate22(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 7</label>
-              <input type="number" onChange={(e) => setDate7(e.target.value)} />
-              <label>День 23</label>
-              <input
-                type="number"
-                onChange={(e) => setDate23(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 8</label>
-              <input type="number" onChange={(e) => setDate8(e.target.value)} />
-              <label>День 24</label>
-              <input
-                type="number"
-                onChange={(e) => setDate24(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 9</label>
-              <input type="number" onChange={(e) => setDate9(e.target.value)} />
-              <label>День 25</label>
-              <input
-                type="number"
-                onChange={(e) => setDate25(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 10</label>
-              <input
-                type="number"
-                onChange={(e) => setDate10(e.target.value)}
-              />
-              <label>День 26</label>
-              <input
-                type="number"
-                onChange={(e) => setDate26(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 11</label>
-              <input
-                type="number"
-                onChange={(e) => setDate11(e.target.value)}
-              />
-              <label>День 27</label>
-              <input
-                type="number"
-                onChange={(e) => setDate27(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 12</label>
-              <input
-                type="number"
-                onChange={(e) => setDate12(e.target.value)}
-              />
-              <label>День 28</label>
-              <input
-                type="number"
-                onChange={(e) => setDate28(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 13</label>
-              <input
-                type="number"
-                onChange={(e) => setDate13(e.target.value)}
-              />
-              <label>День 29</label>
-              <input
-                type="number"
-                onChange={(e) => setDate29(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 14</label>
-              <input
-                type="number"
-                onChange={(e) => setDate14(e.target.value)}
-              />
-              <label>День 30</label>
-              <input
-                type="number"
-                onChange={(e) => setDate30(e.target.value)}
-              />
-            </div>
-            <div className="twoDaysBlock">
-              <label>День 15</label>
-              <input
-                type="number"
-                onChange={(e) => setDate15(e.target.value)}
-              />
-              <label>День 31</label>
-              <input
-                type="number"
-                onChange={(e) => setDate31(e.target.value)}
-              />
-            </div>
-            <div className="lastDayBlock">
-              <label>День 16</label>
-              <input
-                type="number"
-                onChange={(e) => setDate16(e.target.value)}
-              />
-              <label style={{ opacity: "0" }}>День 31</label>
-              <input
-                style={{ opacity: "0" }}
-                type="number"
-                disabled
-                onChange={(e) => setDate31(e.target.value)}
-              />
-            </div>
+          <div className="daysModalDep">
+            {dateArrNew.map((infoDay, index) => (
+              <Fragment key={index}>
+                <div>
+                  <div className="daysBlock">
+                    <label className="labelsDay">{infoDay}</label>
+                    <input
+                      id={index}
+                      type="number"
+                      className="inpDays"
+                      onChange={(event) => countDepsGraph(event, index)}
+                    />
+                  </div>
+                </div>
+              </Fragment>
+            ))}
           </div>
           <div
             style={{
@@ -472,17 +334,18 @@ function SecondNetwork() {
               width: "max-content",
               display: "none",
             }}
-            onClick={dateMonth(countDateMonth)}
           >
             Рассчитать граффик
           </div>
-          <div className="depsOnDay">Депов в днях: {depsAllDays}</div>
+          <div className="depsOnDay">Депов поставленно : {depsAllDays}</div>
         </ModalGraph>
         <div className="headerMenu">
-          <div className="statsTitleBlock">Statistics:</div>
+          <div className="statsTitleBlock">
+            <IoStatsChart />
+          </div>
           <div className="dateBlock">
             <div className="timeTitle" style={{ marginRight: "5px" }}>
-              Data is relevant for:
+              Local time:
             </div>
             <div id="current_date_time_block2">
               <time></time>
@@ -492,14 +355,29 @@ function SecondNetwork() {
             <div className="dateTitle" style={{ marginRight: "5px" }}>
               Date:
             </div>
-            <DateRangePicker onChange={dateNewArr} />
+            <div>
+              <Stack direction="column" spacing={8} alignItems="flex-start">
+                <DateRangePicker
+                  style={{
+                    backgroundColor: "white",
+                    borderRadius: "5px",
+                    height: "47px",
+                  }}
+                  ranges={predefinedRanges}
+                  appearance="subtle"
+                  onChange={dateNewArr}
+                />
+              </Stack>
+            </div>
           </div>
           <CustomWidthTooltip
             title={tooltipCountries.join()}
             arrow
-            placement="right"
+            placement="bottom"
           >
             <div className="geoBlock">
+              <span className="geoTitle">Geo:</span>
+
               <MultiSelect
                 value={selectedCities}
                 onChange={changeAndTooltip}
@@ -517,28 +395,27 @@ function SecondNetwork() {
           <div className="sideMenu">
             <div className="infoBlock">
               <div>
-                <h3 className="titleInfoBlock">Total Leads</h3>
-                <h2 className="countLeads">{totalLeads}</h2>
+                <h3 className="titleInfoBlock">Total</h3>
+                <h2 className="countLeads">{innerTotalLeads}</h2>
                 <hr />
                 <div className="infoDepMainBlcok">
                   <div>
                     <h2 className="blockDep_Title">Sent</h2>
-                    <h2>{sendLeads}</h2>
+                    <h2>{innerSendLeads}</h2>
                     <span>{procentSendLeads} %</span>
                   </div>
 
                   <div className="blockDep">
                     <h2 className="blockDep_Title">Deposits</h2>
-                    <h2>{depLeads}</h2>
+                    <h2>{innerDepLeads}</h2>
                     <span>{procentDepLeads} %</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
           <div style={{ marginLeft: "15px" }}>
-            <Bar
+            <Line
               type="line"
               width={1000}
               height={500}

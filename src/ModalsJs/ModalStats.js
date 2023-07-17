@@ -22,6 +22,7 @@ export default function ModalStats({
           <div className="modalBlockWrite">
             <label className="modalLabelStats">Всего лидов : </label>
             <input
+              id="totalLeads"
               className="modalnputStats"
               type="number"
               onChange={(e) => setTotalLeads(e.target.value)}
@@ -44,7 +45,7 @@ export default function ModalStats({
             />
           </div>
           <div className="btnModalProcent" onClick={procentsAll}>
-            Рассчитать процент
+            Рассчитать статистику
           </div>
         </div>
       </div>
