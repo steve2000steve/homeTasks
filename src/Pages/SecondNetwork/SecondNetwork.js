@@ -309,6 +309,14 @@ function SecondNetwork() {
           ranges={predefinedRanges}
         />
         <ModalGraph active={activeModalGraph} setActive={setActiveModalGraph}>
+          <div
+            className={
+              depsAllDays <= innerDepLeads ? "infoNotFailDep" : "infoFailDep"
+            }
+          >
+            Выставленных депозитов на граффике превышает депозитов на
+            статистике!
+          </div>
           <div className="daysModalDep">
             {dateArrNew.map((infoDay, index) => (
               <Fragment key={index}>
@@ -318,7 +326,11 @@ function SecondNetwork() {
                     <input
                       id={index}
                       type="number"
-                      className="inpDays"
+                      className={
+                        depsAllDays <= innerDepLeads
+                          ? "inpDays"
+                          : "inpDaysInvaLID"
+                      }
                       onChange={(event) => countDepsGraph(event, index)}
                     />
                   </div>

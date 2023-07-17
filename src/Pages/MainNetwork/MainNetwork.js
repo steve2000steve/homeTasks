@@ -258,7 +258,7 @@ function MainNetwork() {
               id="modalBtn"
               onClick={toggle}
             >
-              BrureInfo
+              BlureInfo
             </button>
           </div>
           <div>
