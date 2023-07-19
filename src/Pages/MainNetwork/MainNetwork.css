@@ -271,10 +271,12 @@
 }
 
 .geoBlock__Main{
-    width: 150px;
+    width: 133px;
     color: white; 
     font-size: 14px;
- 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .deleteGeo__Main{
     width: 40px;
@@ -328,7 +330,7 @@
 }
 .affBlockMainTEXT_Main{
     text-align: start;
-    width: 150px;
+    width: 140px;
     /* margin: 0px; */
 }
 .affBlockMainICON_Main{
