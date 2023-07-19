@@ -358,23 +358,18 @@ function MainNetwork() {
             </div>
             <div className="countyMainBlock__Main">
               <div className="iconGeo__Main">
-                {selectedCities.length > 1 ? (
-                  <CustomWidthTooltip title={tooltipCountries.join()} arrow>
-                    <div className="countGeos__Main">
-                      {selectedCities.length - 1} +
-                    </div>
-                  </CustomWidthTooltip>
-                ) : (
-                  <img style={{ width: "20px" }} src={globeImg} alt="" />
-                )}
+                <img style={{ width: "20px" }} src={globeImg} alt="" />
               </div>
               <div className="geoBlock__Main">
                 {selectedCities.length == 0
                   ? "Select Geo"
                   : selectedCities[selectedCities.length - 1].name}
+                {selectedCities.length == 0
+                  ? ""
+                  : `, +${selectedCities.length - 1}`}
               </div>
               <div className="deleteGeo__Main">
-                <RxCross2 />
+                <img src={arrowIcon} alt="" />
               </div>
             </div>
 
