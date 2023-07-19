@@ -49,6 +49,8 @@
 .searchBar{
     display: flex;
     margin-left: 15px;
+    margin-bottom: 9px;
+    /* height: 40px; */
 }
 
 .icon_Search{
