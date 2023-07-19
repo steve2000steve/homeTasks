@@ -286,6 +286,11 @@ function SecondNetwork() {
             </button>
           </div>
           <div>
+            {/* <button className="btnModalStats">
+              <Link className="secondNetworkLink" to="/dozvon">
+                Dozvon
+              </Link>
+            </button> */}
             <button className="btnModalStats">
               <Link className="secondNetworkLink" to="/mainNetwork">
                 MainNetwork

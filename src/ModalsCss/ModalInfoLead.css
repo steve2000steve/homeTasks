@@ -1,0 +1,70 @@
+.modalInfo{
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.modalInfo.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modalInfo_content{
+    padding: 20px 30px;
+    background-color: rgb(23, 21, 21);
+    transform: scale(0.5);
+    transition: 0.4s all;
+    width: max-content;
+    height: max-content;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:500;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalInfo_content.active{
+    transform: scale(1);
+}
+
+.BlockModalDozvon{
+    margin-top: 10px;
+}
+
+.CountLeads{
+    color: white;
+    margin-right: 10px;
+
+}
+.inpCountLeads{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+.BtnDozvonModal{
+    margin: auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(68, 50, 50);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.BtnDozvonModal:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}

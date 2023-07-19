@@ -262,6 +262,11 @@ function MainNetwork() {
             </button>
           </div>
           <div>
+            {/* <button className="btnModalStats_Main">
+              <Link className="secondNetworkLink" to="/dozvon">
+                Dozvon
+              </Link>
+            </button> */}
             <button className="btnModalStats_Main">
               <Link className="secondNetworkLink" to="/mainNetwork">
                 MainNetwork
@@ -340,7 +345,9 @@ function MainNetwork() {
               <div className="tittleDate__Main">Date:</div>
               <div className="date__Main">
                 {`${currentDateFirst} ${currentMonthFirst}. ${currentYearFirst}`}
-                <span className="tab"> – </span>{" "}
+                {"ㅤ"}
+                <span className="tab">–</span>
+                {"ㅤ"}
                 {`${currentDateSecond} ${currentMonthSecond}. ${currentYearFirst}`}
               </div>
             </div>

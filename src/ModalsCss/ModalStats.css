@@ -69,6 +69,7 @@ input::-webkit-inner-spin-button {
     font-weight:bold;
     border-radius: 5px;
     margin-top: 20px;
+    padding: 10px;
 }
 .btnModalProcent:hover{
     background-color: white;
