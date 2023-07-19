@@ -364,9 +364,9 @@ function MainNetwork() {
                 {selectedCities.length == 0
                   ? "Select Geo"
                   : selectedCities[selectedCities.length - 1].name}
-                {selectedCities.length == 0
-                  ? ""
-                  : `, +${selectedCities.length - 1}`}
+                {selectedCities.length > 1
+                  ? `, +${selectedCities.length - 1}`
+                  : ""}
               </div>
               <div className="deleteGeo__Main">
                 <img src={arrowIcon} alt="" />
