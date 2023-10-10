@@ -1,180 +1,181 @@
-.dozvonBody{
-    background-color: #100e1f;
-    min-height: 100vh;
-    padding: 15px;
-    margin: 0px;
-    font-family: 'Josefin Sans', sans-serif;
+.dozvonBody {
+  background-color: #100e1f;
+  min-height: 100vh;
+  padding: 15px;
+  margin: 0px;
+  font-family: "Josefin Sans", sans-serif;
 }
 
-.dozvonMainBlock{
-    margin-top: 20px;
-    background-color: #252434;
-    height: max-content;
-    width: max-content;
-    padding: 20px 20px;
-    border-radius: 6px;
+.dozvonMainBlock {
+  margin-top: 20px;
+  background-color: #252434;
+  height: max-content;
+  width: max-content;
+  padding: 20px 20px;
+  border-radius: 6px;
 }
 
-.dozvonMainHeader{
-    background-color: #3a374a;
-    width: max-content;
-    height: 40px;
-    border-radius: 6px;
-    display: flex;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:500;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
+.dozvonMainHeader {
+  background-color: #3a374a;
+  width: max-content;
+  height: 40px;
+  border-radius: 6px;
+  display: flex;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
 }
 
-.RegBlockDozvon{
-    width: 133px;
-    padding-right: 12px;
+.RegBlockDozvon {
+  width: 150px;
+  padding-right: 12px;
 }
-.GeoBlockDozvon{
-    width: 68px;
-    padding-right: 12px;
+.GeoBlockDozvon {
+  width: 68px;
+  padding-right: 12px;
 }
-.StatusBlockDozvon{
-    width: 123px;
-    padding-right: 12px;
+.StatusBlockDozvon {
+  width: 123px;
+  padding-right: 12px;
 }
-.TestBlockDozvon{
-    width: 73px;
-    padding-right: 12px;
+.TestBlockDozvon {
+  width: 85px;
+  padding-right: 12px;
 }
-.AutologinBlockDozvon{
-    width: 80px;
-    padding-right: 12px;
+.AutologinBlockDozvon {
+  width: 80px;
+  padding-right: 12px;
 }
-.RAWBlockDozvon{
-    width: 213px;
-    padding-right: 12px;
-}
-
-.leadBlockDozvon{
-    display: flex;
-    height: 48px;
-    padding-left: 20px;
-    align-items: center;
+.RAWBlockDozvon {
+  width: 213px;
+  padding-right: 12px;
 }
 
-
-
-.RegBlockDozvon_Lead{
-    width: 133px;
-    padding-right: 12px;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:400;
-}
-.GeoBlockDozvon_Lead{
-    width: 68px;
-    padding-right: 12px;
-    color: white;
-    font-size: 20px;
-}
-.StatusBlockDozvon_Lead{
-    width: 123px;
-    padding-right: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:500;
-}
-.sentBlock{
-    padding: 2px 8px;
-    width: max-content;
-    color: rgb(178, 214, 247);
-    background-color: #333648;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.depBlock{
-    padding: 2px 8px;
-    width: max-content;
-    color: white;
-    background-color: #14af56;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.TestBlockDozvon_Lead{
-    width: 73px;
-    padding-right: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:500;
-}
-.testBlock{
-    padding: 2px 8px;
-    width: max-content;
-    color: white;
-    background-color: #3b3a49;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    border-radius: 4px;
-}
-.AutologinBlockDozvon_Lead{
-    width: 80px;
-    padding-right: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:500;
-}
-.autologBlock{
-    padding: 2px 8px;
-    width: max-content;
-    color: white;
-    background-color: #14af56;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.NoAutologBlock{
-    padding: 2px 8px;
-    width: max-content;
-    color: white;
-    background-color: #3b3a49;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.RAWBlockDozvon_Lead{
-    width: 213px;
-    padding-right: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight:500;
-    
-}
-.rawBlock{
-    padding: 2px 8px;
-    width: max-content;
-    color: white;
-    background-color: #3b3a49;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    border-radius: 4px;
-    cursor: pointer;
+.leadBlockDozvon {
+  display: flex;
+  height: 48px;
+  padding-left: 20px;
+  align-items: center;
 }
 
-.inpTimeBlock{
-    width: 40px;
-    display: inline;
+.RegBlockDozvon_Lead {
+  width: 150px;
+  padding-right: 12px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+.GeoBlockDozvon_Lead {
+  width: 68px;
+  padding-right: 12px;
+  color: white;
+  font-size: 20px;
+}
+.StatusBlockDozvon_Lead {
+  width: 123px;
+  padding-right: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+.sentBlock {
+  padding: 2px 8px;
+  width: max-content;
+  color: rgb(178, 214, 247);
+  background-color: #333648;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.depBlock {
+  padding: 2px 8px;
+  width: max-content;
+  color: white;
+  background-color: #14af56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.TestBlockDozvon_Lead {
+  width: 85px;
+  padding-right: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+.testBlock {
+  padding: 2px 8px;
+  width: max-content;
+  color: white;
+  background-color: #3b3a49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 4px;
+}
+.AutologinBlockDozvon_Lead {
+  width: 80px;
+  padding-right: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+.autologBlock {
+  /* padding: 2px 8px; */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  color: white;
+  background-color: #14af56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  /* border-radius: 4px; */
+  cursor: pointer;
+}
+.NoAutologBlock {
+  /* padding: 2px 8px; */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  color: white;
+  background-color: #3b3a49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  /* border-radius: 4px; */
+  cursor: pointer;
+}
+.RAWBlockDozvon_Lead {
+  width: 213px;
+  padding-right: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+.rawBlock {
+  padding: 2px 8px;
+  width: max-content;
+  color: white;
+  background-color: #3b3a49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.inpTimeBlock {
+  width: 40px;
+  display: inline;
 }

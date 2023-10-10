@@ -5,7 +5,8 @@ import { useState } from "react";
 import ModalInfoLead from "../../ModalsJs/ModalInfoLead";
 import { DateRangePicker } from "rsuite";
 import subDays from "date-fns/subDays";
-import Afganistan from "../../imgs/iconGeo/Afganistan.png";
+import Select from "react-select";
+import objCountriesReact_SELECT from "../../imports2";
 
 const ranges = [
   {
@@ -23,9 +24,15 @@ export default function Dozvon() {
   const [countLeads, setCountLeads] = useState();
   const [innerCountLeads, setInnerCountLeads] = useState([]);
   const [choseDate, setChoseDate] = useState();
+  const [choseGeo, setChoseGeo] = useState();
+  const [changeGeo, setChangeGeo] = useState();
+
   function dateChose(e) {
     let dateLeadDozvon = new Date(e[0]);
     setChoseDate(dateLeadDozvon.toLocaleDateString());
+  }
+  function geoChose(e) {
+    setChoseGeo(e.value);
   }
 
   function innerFucn() {
@@ -35,9 +42,11 @@ export default function Dozvon() {
         index: i,
         date: choseDate,
         timeDate: "00:00",
+        geo: choseGeo,
         isFocusChoseTime: true,
         isDeposited: true,
         autoLogin: true,
+        isGeo: true,
         callStatus: "Your_Status",
         isFocusedStatus: true,
       });
@@ -87,6 +96,20 @@ export default function Dozvon() {
     arrUpdate[index].isFocusChoseTime = false;
     setInnerCountLeads(arrUpdate);
   }
+  function geoFunck(e, index) {
+    let arrUpdate = [...innerCountLeads];
+    arrUpdate[index].geo = changeGeo;
+    arrUpdate[index].isGeo = true;
+    setInnerCountLeads(arrUpdate);
+  }
+  function NoGeoFunc(e, index) {
+    let arrUpdate = [...innerCountLeads];
+    arrUpdate[index].isGeo = false;
+    setInnerCountLeads(arrUpdate);
+  }
+  function changeingGeo(e) {
+    setChangeGeo(e.value);
+  }
 
   return (
     <>
@@ -112,6 +135,12 @@ export default function Dozvon() {
               ranges={ranges}
               onChange={dateChose}
             />
+          </div>
+          <div className="BlockModalDozvon">
+            <label className="CountLeads">ГЕО:</label>
+            <div style={{ width: "230px" }}>
+              <Select options={objCountriesReact_SELECT} onChange={geoChose} />
+            </div>
           </div>
           <div className="BtnDozvonModal" onClick={innerFucn}>
             Отобразить Дозвон
@@ -152,7 +181,7 @@ export default function Dozvon() {
           <div className="dozvonMainHeader">
             <div className="RegBlockDozvon">Registered</div>
             <div className="GeoBlockDozvon">GEO</div>
-            <div className="StatusBlockDozvon">Staus</div>
+            <div className="StatusBlockDozvon">Status</div>
             <div className="TestBlockDozvon">Test</div>
             <div className="AutologinBlockDozvon">Autologin</div>
             <div className="RAWBlockDozvon">RAW status</div>
@@ -177,7 +206,20 @@ export default function Dozvon() {
                     )}
                   </div>
                   <div className="GeoBlockDozvon_Lead">
-                    <img src={Afganistan} alt="" />
+                    {innerCountLeads[index].isGeo ? (
+                      <div onClick={(e) => NoGeoFunc(e, index)}>
+                        <img src={info.geo} alt="" />
+                      </div>
+                    ) : (
+                      <div>
+                        <Select
+                          className="selectiInpDozvon"
+                          options={objCountriesReact_SELECT}
+                          onBlur={(e) => geoFunck(e, index)}
+                          onChange={changeingGeo}
+                        />
+                      </div>
+                    )}
                   </div>
                   <div className="StatusBlockDozvon_Lead">
                     {innerCountLeads[index].isDeposited ? (
@@ -198,16 +240,12 @@ export default function Dozvon() {
                       <div
                         className="autologBlock"
                         onClick={() => autologFunc(index)}
-                      >
-                        Yes
-                      </div>
+                      ></div>
                     ) : (
                       <div
                         className="NoAutologBlock"
                         onClick={() => NoAutologFunc(index)}
-                      >
-                        No
-                      </div>
+                      ></div>
                     )}
                   </div>
                   <div className="RAWBlockDozvon_Lead">

@@ -8,6 +8,7 @@ export default function ModalStats({
   setSendLeads,
   setDepLeads,
   procentsAll,
+  children,
 }) {
   return (
     <div
@@ -44,6 +45,7 @@ export default function ModalStats({
               onChange={(e) => setDepLeads(e.target.value)}
             />
           </div>
+          {children}
           <div className="btnModalProcent" onClick={procentsAll}>
             Рассчитать статистику
           </div>

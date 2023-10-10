@@ -286,11 +286,11 @@ function SecondNetwork() {
             </button>
           </div>
           <div>
-            {/* <button className="btnModalStats">
+            <button className="btnModalStats">
               <Link className="secondNetworkLink" to="/dozvon">
                 Dozvon
               </Link>
-            </button> */}
+            </button>
             <button className="btnModalStats">
               <Link className="secondNetworkLink" to="/mainNetwork">
                 MainNetwork

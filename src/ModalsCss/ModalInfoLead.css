@@ -38,6 +38,8 @@
 
 .BlockModalDozvon{
     margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .CountLeads{
@@ -67,4 +69,8 @@
     color: black;
     cursor: pointer;
     transition: 0.3s;
+}
+.selectiInpDozvon{
+    width: 100px;
+    color: black;
 }
