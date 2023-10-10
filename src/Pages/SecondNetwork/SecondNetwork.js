@@ -21,6 +21,7 @@ import startOfMonth from "date-fns/startOfMonth";
 import endOfMonth from "date-fns/endOfMonth";
 import addMonths from "date-fns/addMonths";
 import { IoStatsChart } from "react-icons/io5";
+
 Chart.register(CategoryScale);
 Chart.register(...registerables);
 
@@ -266,9 +267,28 @@ function SecondNetwork() {
     ],
   };
 
+  // const [state, setState] = useState([
+  //   {
+  //     startDate: null,
+  //     endDate: null,
+  //     key: "selection",
+  //   },
+  // ]);
+
   return (
     <>
       <div className="secondNetwork__body">
+        <div style={{ background: "black" }}>
+          {/* <DateRange
+            onChange={(item) => setState([item.selection])}
+            ranges={state}
+            months={2}
+            direction="horizontal"
+            moveRangeOnFirstSelection={false}
+            showSelectionPreview={true}
+            editableDateInputs={true}
+          /> */}
+        </div>
         <div className="headerTop">
           <div>
             <button

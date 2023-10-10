@@ -32,6 +32,9 @@ import sentLead from "../../imgs/sendLead.png";
 import depLead from "../../imgs/depLead.png";
 import failLead from "../../imgs/failLead.png";
 import { Bar } from "react-chartjs-2";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import { DateRange } from "react-date-range";
 // import { CategoryScale, Chart } from "chart.js";
 // import { registerables } from "chart.js";
 // Chart.register(CategoryScale);
@@ -232,13 +235,32 @@ function MainNetwork() {
   const [currentMonthSecond, setCurrentMonthSecond] = useState("");
   const [currentYearFirst, setCurrentYearFirst] = useState("");
 
+  const [state, setState] = useState([
+    {
+      startDate: null,
+      endDate: null,
+      key: "selection",
+    },
+  ]);
+
+  var optionsDate = {
+    month: "long",
+  };
+
   function dateNewArrTest(e) {
-    let totalArrDate = e.join(",");
-    setCurrentDateFirst(totalArrDate.slice(8, 10));
-    setCurrentDateSecond(totalArrDate.slice(74, 78));
+    setState([e.selection]);
+    let newArrDate = [];
+    newArrDate.push(e.selection.endDate, e.selection.startDate);
+    let totalArrDate = newArrDate.join(",");
+    setCurrentDateFirst(newArrDate[1].getDate());
+    setCurrentDateSecond(newArrDate[0].getDate());
     setCurrentYearFirst(totalArrDate.slice(11, 15));
-    setCurrentMonthFirst(totalArrDate.slice(4, 7));
-    setCurrentMonthSecond(totalArrDate.slice(70, 74));
+    setCurrentMonthFirst(
+      newArrDate[1].toLocaleString("en", optionsDate).slice(0, 3)
+    );
+    setCurrentMonthSecond(
+      newArrDate[0].toLocaleString("en", optionsDate).slice(0, 3)
+    );
   }
 
   const [selectedCities, setSelectedCities] = useState([]);
@@ -291,13 +313,21 @@ function MainNetwork() {
     dateNewArrTest(e);
     const zeroLength = 2;
     dateArrDate.length = 0;
-    dateArrDate.push(e[0].toDateString());
+    dateArrDate.push(e.selection.startDate.toDateString());
     let dateTotalArr = [];
-    let totalArrDate = e.join(",");
-    let newArrayFirst = totalArrDate.slice(4, 15);
-    const NewDate = new Date(newArrayFirst);
+    let newTestDateArr = [];
+    newTestDateArr.push(e.selection.endDate, e.selection.startDate);
+    const NewDate = new Date(e.selection.startDate);
+    console.log(NewDate);
 
-    if (e[0].toDateString() === e[1].toDateString()) {
+    const testTestTest = NewDate.setDate(NewDate.getDate());
+    console.log(testTestTest);
+    console.log(e.selection.endDate.setDate(e.selection.endDate.getDate()));
+
+    if (
+      e.selection.startDate.toDateString() ===
+      e.selection.endDate.toDateString()
+    ) {
       setDateArrNew([
         "05:00",
         "06:00",
@@ -321,7 +351,10 @@ function MainNetwork() {
       for (let i = 1; i > -1; i++) {
         NewDate.setDate(NewDate.getDate() + 1);
         dateArrDate.push(NewDate.toDateString());
-        if (e[1].toDateString() === dateArrDate[dateArrDate.length - 1]) {
+        if (
+          e.selection.endDate.toDateString() ===
+          dateArrDate[dateArrDate.length - 1]
+        ) {
           break;
         }
       }
@@ -333,7 +366,6 @@ function MainNetwork() {
             String(test.getMonth() + 1).padStart(zeroLength, "0")
         );
       });
-
       setDateArrNew(dateTotalArr);
     }
   }
@@ -449,11 +481,29 @@ function MainNetwork() {
             />
           </div>
         </ModalStats>
+
         <ModalDateAndGeo
           active={activeModalDateAndGeo}
           setActive={setActiveModalDateAndGeo}
         >
           <div className="DateModalBlock__Main">
+            <div
+              className="dateTitle"
+              style={{ marginRight: "20px", color: "white" }}
+            >
+              Date2:
+            </div>
+            <DateRange
+              onChange={dateNewArr}
+              ranges={state}
+              months={2}
+              direction="horizontal"
+              moveRangeOnFirstSelection={false}
+              showSelectionPreview={true}
+              editableDateInputs={true}
+            />
+          </div>
+          {/* <div className="DateModalBlock__Main">
             <div
               className="dateTitle"
               style={{ marginRight: "20px", color: "white" }}
@@ -467,7 +517,7 @@ function MainNetwork() {
                 onChange={dateNewArr}
               />
             </Stack>
-          </div>
+          </div> */}
           <div className="DateModalBlock__Main">
             <div
               className="dateTitle"
@@ -547,11 +597,17 @@ function MainNetwork() {
               </div>
               <div className="tittleDate__Main">Date:</div>
               <div className="date__Main">
-                {`${currentDateFirst} ${currentMonthFirst}. ${currentYearFirst}`}
+                {`${String(currentDateFirst).padStart(
+                  "2",
+                  "0"
+                )} ${currentMonthFirst}. ${currentYearFirst}`}
                 {"ㅤ"}
                 <span className="tab">–</span>
                 {"ㅤ"}
-                {`${currentDateSecond} ${currentMonthSecond}. ${currentYearFirst}`}
+                {`${String(currentDateSecond).padStart(
+                  "2",
+                  "0"
+                )} ${currentMonthSecond}. ${currentYearFirst}`}
               </div>
             </div>
             <div className="timeGap">
