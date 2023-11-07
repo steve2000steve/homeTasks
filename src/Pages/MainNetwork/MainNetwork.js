@@ -750,26 +750,6 @@ function MainNetwork() {
         <div className="statsMainBlock_New">
           <div className="statsInfoBlock_New">
             <div className="statBlockSingle_New">
-              <div className={blure ? "blureInfo2 active" : "blureInfo2"}></div>
-              <div>
-                <div style={{ display: "flex" }}>
-                  <div>
-                    <img src={newLead} alt="" />
-                  </div>
-                  <div className="fontStats_New">New</div>
-                </div>
-              </div>
-              <div className="bottomBlockStat_New">
-                <div>
-                  <span className="countLeads_New">{innerNewLeads}</span>
-                  <span className="fontleads_New">leads</span>
-                </div>
-                <div>
-                  <div className="procentBlock_New">{procentNewLeads}%</div>
-                </div>
-              </div>
-            </div>
-            <div className="statBlockSingle_New">
               <div>
                 <div style={{ display: "flex" }}>
                   <div>
@@ -844,6 +824,26 @@ function MainNetwork() {
                   >
                     {procentFailLeads}%
                   </div>
+                </div>
+              </div>
+            </div>
+            <div className="statBlockSingle_New">
+              <div className={blure ? "blureInfo2 active" : "blureInfo2"}></div>
+              <div>
+                <div style={{ display: "flex" }}>
+                  <div>
+                    <img src={newLead} alt="" />
+                  </div>
+                  <div className="fontStats_New">New</div>
+                </div>
+              </div>
+              <div className="bottomBlockStat_New">
+                <div>
+                  <span className="countLeads_New">{innerNewLeads}</span>
+                  <span className="fontleads_New">leads</span>
+                </div>
+                <div>
+                  <div className="procentBlock_New">{procentNewLeads}%</div>
                 </div>
               </div>
             </div>
